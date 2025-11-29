@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Study of Sound - Concept Map & Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f7ff;
+      --card-bg: #ffffff;
+      --accent: #3b82f6;
+      --accent-soft: #dbeafe;
+      --accent-dark: #1d4ed8;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --border-subtle: #e5e7eb;
+      --correct: #22c55e;
+      --incorrect: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #e0f2fe 0, #f5f7ff 40%, #f9fafb 100%);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    header.hero {
+      background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+      color: white;
+      border-radius: 1.5rem;
+      padding: 1.75rem 1.75rem 1.5rem;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+
+    header.hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0, rgba(255, 255, 255, 0.18), transparent 55%),
+                  radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.35), transparent 60%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-text h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.9rem, 3vw, 2.2rem);
+      letter-spacing: 0.03em;
+    }
+
+    .hero-text p {
+      margin: 0.15rem 0;
+      font-size: 0.98rem;
+      opacity: 0.95;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      align-items: flex-end;
+    }
+
+    .badge {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.3);
+      border: 1px solid rgba(191, 219, 254, 0.6);
+      backdrop-filter: blur(6px);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .badge span.icon {
+      font-size: 1rem;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section h2 span.tagline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Overview layout */
+
+    .overview-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .overview-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 1.25rem;
+      padding: 1.25rem 1.3rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(209, 213, 219, 0.7);
+    }
+
+    .card h3 {
+      margin: 0 0 0.7rem;
+      font-size: 1rem;
+    }
+
+    .mindmap-img {
+      width: 100%;
+      border-radius: 0.9rem;
+      border: 1px solid #e5e7eb;
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Section cards */
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 1.5rem 1.5rem;
+      width: 100%;
+    }
+
+    @media (max-width: 992px) {
+      .section-grid {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-card {
+      border-radius: 1rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, #ffffff, #eff6ff);
+      border: 1px solid #dbeafe;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .section-card h3 {
+      margin: 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .section-chip {
+      font-size: 0.75rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(191, 219, 254, 0.8);
+      color: var(--accent-dark);
+    }
+
+    .section-card p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .section-actions {
+      margin-top: 0.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 500;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.5);
+      background: var(--accent-dark);
+    }
+
+    .btn-outline {
+      background: white;
+      border: 1px solid #cbd5f5;
+      color: var(--accent-dark);
+    }
+
+    .btn-outline:hover {
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .btn-small {
+      padding: 0.32rem 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-ghost:hover {
+      color: var(--accent-dark);
+    }
+
+    /* Section overviews (mental map text per section) */
+
+    .section-overview {
+      margin-top: 1.2rem;
+    }
+
+    .section-overview h3 {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+
+    .section-overview-block {
+      margin-bottom: 1.1rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: 0.9rem;
+      border: 1px dashed #cbd5f5;
+      background: #f9fafb;
+    }
+
+    .section-overview-block strong {
+      display: inline-block;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-overview-arrows {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .flow-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .flow-step {
+      position: relative;
+      padding-left: 1.8rem;
+    }
+
+    .flow-step::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      border: 1px solid #bfdbfe;
+      color: var(--accent-dark);
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .flow-step-title {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .flow-step-body {
+      font-size: 0.88rem;
+    }
+
+    .flow-subpoints {
+      margin: 0.2rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.86rem;
+    }
+
+    /* Quiz area */
+
+    #quiz-area {
+      margin-top: 1.8rem;
+    }
+
+    #quiz-container {
+      margin-top: 0.7rem;
+      display: none;
+    }
+
+    #quiz-container.active {
+      display: block;
+    }
+
+    .quiz-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .quiz-header-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .quiz-header-title span.section-name {
+      color: var(--accent-dark);
+    }
+
+    .toggle-map-btn {
+      padding: 0.3rem 0.75rem;
+      font-size: 0.8rem;
+      border-radius: 999px;
+      border: 1px dashed #bfdbfe;
+      background: #eff6ff;
+      color: var(--accent-dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .toggle-map-btn span.icon {
+      font-size: 0.9rem;
+    }
+
+    .quiz-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .quiz-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      #section-map-panel {
+        order: -1;
+      }
+    }
+
+    .quiz-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    .progress-bar-wrapper {
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+      margin-bottom: 0.7rem;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #22c55e, #3b82f6);
+      transition: width 0.25s ease;
+    }
+
+    .quiz-status-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .quiz-question-text {
+      font-size: 0.98rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .options-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.3rem 0 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .option-item {
+      border-radius: 0.65rem;
+      border: 1px solid #e5e7eb;
+      padding: 0.4rem 0.55rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: border 0.12s ease, background 0.12s ease, transform 0.05s ease;
+      background: #f9fafb;
+    }
+
+    .option-item:hover {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .option-item input {
+      margin: 0;
+      accent-color: var(--accent);
+    }
+
+    .option-letter {
+      font-weight: 600;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      width: 1.1rem;
+      text-align: center;
+    }
+
+    .option-text {
+      font-size: 0.9rem;
+    }
+
+    .option-item.selected {
+      border-color: var(--accent);
+      background: #e0ecff;
+    }
+
+    .quiz-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.7rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .quiz-nav-left {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .quiz-nav-right {
+      margin-left: auto;
+    }
+
+    #section-map-panel {
+      border-radius: 1rem;
+      border: 1px dashed #cbd5f5;
+      background: #eff6ff;
+      padding: 0.8rem 0.9rem;
+      font-size: 0.86rem;
+      display: none;
+      max-height: 350px;
+      overflow-y: auto;
+    }
+
+    #section-map-panel.active {
+      display: block;
+    }
+
+    #section-map-panel h4 {
+      margin: 0 0 0.3rem;
+      font-size: 0.9rem;
+      color: var(--accent-dark);
+    }
+
+    #results-card {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    #results-card.active {
+      display: block;
+    }
+
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .results-score {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .results-score span.good {
+      color: var(--correct);
+    }
+
+    .results-score span.bad {
+      color: var(--incorrect);
+    }
+
+    .results-summary {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .results-list {
+      margin-top: 0.7rem;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 0.5rem;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+
+    .result-item {
+      padding: 0.45rem 0.45rem 0.45rem 0;
+      border-bottom: 1px dashed #e5e7eb;
+      font-size: 0.85rem;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+      align-items: baseline;
+    }
+
+    .result-pill {
+      padding: 0.05rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .result-pill.correct {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .result-pill.incorrect {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .result-q {
+      margin-top: 0.2rem;
+    }
+
+    .result-line {
+      margin-top: 0.15rem;
+    }
+
+    .result-line strong {
+      font-weight: 600;
+    }
+
+    /* Simulations */
+
+    .sim-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 880px) {
+      .sim-grid {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .sim-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sim-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid #dbeafe;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .sim-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.98rem;
+    }
+
+    .sim-card p {
+      margin: 0 0 0.55rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .sim-card a {
+      font-size: 0.86rem;
+      text-decoration: none;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    /* Textbook exercise */
+
+    .exercise-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .exercise-item {
+      padding: 0.75rem 0.85rem;
+      border-radius: 0.9rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .exercise-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      justify-content: space-between;
+    }
+
+    .exercise-question {
+      font-size: 0.92rem;
+      margin-right: 0.5rem;
+    }
+
+    .exercise-answer {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      display: none;
+    }
+
+    .exercise-answer.visible {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer span.heart {
+      color: #f97373;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Study of Sound</h1>
+          <p>Created by <strong>Rajgopal V</strong></p>
+          <p>For Grade 8, <strong>VarshaNagar MPS</strong></p>
+        </div>
+        <div class="hero-badges">
+          <div class="badge">
+            <span class="icon">🎯</span>
+            <span>6 Sections · Concept + Practice</span>
+          </div>
+          <div class="badge">
+            <span class="icon">🧠</span>
+            <span>Mind Map + Guided Q&amp;A</span>
+          </div>
+          <div class="badge">
+            <span class="icon">🔊</span>
+            <span>Simulations + Textbook Exercise</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section class="section" id="overview">
+      <h2>
+        Topic Overview
+        <span class="tagline">How this lesson on Sound is organised</span>
+      </h2>
+
+      <div class="overview-layout">
+        <!-- Mind map -->
+        <div class="card">
+          <h3>Mental Map: Study of Sound</h3>
+          <!-- Mind map image file -->
+          <img src="MindMap_Sound.png" alt="Study of Sound Mind Map" class="mindmap-img" />
+          <p class="muted">
+            Use this mind map as a quick reminder of the whole chapter. The topic is broken into
+            <strong>6 sections</strong>. Each section has its own <strong>Overview</strong> (mini concept
+            map) and <strong>Q&amp;A</strong> (MCQ quiz).
+          </p>
+        </div>
+
+        <!-- How to use -->
+        <div class="card">
+          <h3>How to use this page</h3>
+          <ol class="how-to-list muted" style="padding-left: 1.1rem; margin: 0;">
+            <li>Select one of the <strong>6 sections</strong> below.</li>
+            <li>Click <strong>Overview</strong> on a section card to see the key ideas for that part.</li>
+            <li>Click <strong>Start Q&amp;A</strong> to answer MCQs only from that section.</li>
+            <li>While answering, you can open the <strong>mental map on the side</strong> to help you.</li>
+            <li>Explore the <strong>Simulations</strong> to see sound as a wave.</li>
+            <li>Use the <strong>Textbook Exercise</strong> section at the bottom to practice long-answer questions.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION CARDS -->
+    <section class="section" id="sections">
+      <h2>
+        Choose a Section
+        <span class="tagline">Each section has its own Overview &amp; Q&amp;A</span>
+      </h2>
+
+      <div class="section-grid">
+        <article class="section-card" data-section="nature">
+          <h3>
+            Nature &amp; Types of Sound Waves
+            <span class="section-chip">Section 1</span>
+          </h3>
+          <p>How sound is produced, longitudinal waves, compression–rarefaction, amplitude, wavelength and loudness.</p>
+          <div class="section-actions">
+            <button class="btn btn-outline" data-action="overview" data-section="nature">Overview (mind map)</button>
+            <button class="btn btn-primary" data-action="quiz" data-section="nature">Start Q&amp;A</button>
+          </div>
+        </article>
+
+        <article class="section-card" data-section="velocity">
+          <h3>
+            Velocity of Sound
+            <span class="section-chip">Section 2</span>
+          </h3>
+          <p>Speed of sound in solids, liquids, gases and how temperature and density affect the speed.</p>
+          <div class="section-actions">
+            <button class="btn btn-outline" data-action="overview" data-section="velocity">Overview (mind map)</button>
+            <button class="btn btn-primary" data-action="quiz" data-section="velocity">Start Q&amp;A</button>
+          </div>
+        </article>
+
+        <article class="section-card" data-section="frequency">
+          <h3>
+            Categories by Frequency
+            <span class="section-chip">Section 3</span>
+          </h3>
+          <p>Audible sound, infrasonic and ultrasonic waves and their typical frequency ranges.</p>
+          <div class="section-actions">
+            <button class="btn btn-outline" data-action="overview" data-section="frequency">Overview (mind map)</button>
+            <button class="btn btn-primary" data-action="quiz" data-section="frequency">Start Q&amp;A</button>
+          </div>
+        </article>
+
+        <article class="section-card" data-section="reflection">
+          <h3>
+            Reflection of Sound
+            <span class="section-chip">Section 4</span>
+          </h3>
+          <p>Echo, reverberation, multiple reflections and conditions for hearing a clear echo.</p>
+          <div class="section-actions">
+            <button class="btn btn-outline" data-action="overview" data-section="reflection">Overview (mind map)</button>
+            <button class="btn btn-primary" data-action="quiz" data-section="reflection">Start Q&amp;A</button>
+          </div>
+        </article>
+
+        <article class="section-card" data-section="ultrasonic">
+          <h3>
+            Applications of Ultrasonic Sound
+            <span class="section-chip">Section 5</span>
+          </h3>
+          <p>Uses like SONAR, cleaning instruments, welding plastics and medical imaging.</p>
+          <div class="section-actions">
+            <button class="btn btn-outline" data-action="overview" data-section="ultrasonic">Overview (mind map)</button>
+            <button class="btn btn-primary" data-action="quiz" data-section="ultrasonic">Start Q&amp;A</button>
+          </div>
+        </article>
+
+        <article class="section-card" data-section="ear">
+          <h3>
+            Human Ear: Structure &amp; Function
+            <span class="section-chip">Section 6</span>
+          </h3>
+          <p>Outer, middle and inner ear; how vibrations finally reach the brain as sound.</p>
+          <div class="section-actions">
+            <button class="btn btn-outline" data-action="overview" data-section="ear">Overview (mind map)</button>
+            <button class="btn btn-primary" data-action="quiz" data-section="ear">Start Q&amp;A</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Section-specific overviews -->
+      <div class="section-overview" id="section-overview-block" style="display:none;">
+        <h3 id="so-title">Section Overview</h3>
+        <div class="section-overview-block">
+          <strong id="so-heading"></strong>
+          <div id="so-content" class="section-overview-arrows"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIMULATIONS -->
+    <section class="section" id="simulations">
+      <h2>
+        Simulations
+        <span class="tagline">Visualise sound as a wave</span>
+      </h2>
+      <div class="sim-grid">
+        <div class="sim-card">
+          <h3>Generate Waves (Spring model)</h3>
+          <p>See compressions and rarefactions moving along a spring and connect it to sound waves.</p>
+          <a href="https://javalab.org/en/spring_wave_en/" target="_blank" rel="noopener">Open simulation →</a>
+        </div>
+        <div class="sim-card">
+          <h3>Sound: Pitch &amp; Volume</h3>
+          <p>Change the frequency and amplitude to understand how pitch and loudness depend on them.</p>
+          <a href="https://javalab.org/en/sound_wave_en/" target="_blank" rel="noopener">Open simulation →</a>
+        </div>
+        <div class="sim-card">
+          <h3>Sound Waves &amp; Reflection</h3>
+          <p>Observe sound waves moving in air, reflecting from boundaries and forming patterns.</p>
+          <a href="https://phet.colorado.edu/sims/html/sound-waves/latest/sound-waves_all.html" target="_blank" rel="noopener">Open simulation →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ AREA -->
+    <section class="section" id="quiz-area">
+      <h2>
+        Section Q&amp;A (MCQ)
+        <span class="tagline">Attempt questions for the section you selected</span>
+      </h2>
+
+      <div id="quiz-container">
+        <div class="quiz-header">
+          <div class="quiz-header-title">
+            <span>Now attempting:</span>
+            <span class="section-name" id="quiz-section-name">Nature &amp; Types of Sound Waves</span>
+            <small id="quiz-question-count">(0 questions)</small>
+          </div>
+          <button class="toggle-map-btn" id="toggle-map-btn">
+            <span class="icon">🧭</span>
+            <span id="toggle-map-label">Show mind map while answering</span>
+          </button>
+        </div>
+
+        <div class="quiz-layout">
+          <!-- main quiz card -->
+          <div class="quiz-card">
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+            <div class="quiz-status-line">
+              <span id="question-counter">Question 1 of 1</span>
+              <span id="attempt-status">Choose an option to begin.</span>
+            </div>
+            <div class="quiz-question-text" id="question-text">
+              Question text will appear here.
+            </div>
+            <ul class="options-list" id="options-list">
+              <!-- options injected by JS -->
+            </ul>
+            <div class="quiz-nav">
+              <div class="quiz-nav-left">
+                <button class="btn btn-outline btn-small" id="prev-btn">← Previous</button>
+                <button class="btn btn-outline btn-small" id="next-btn">Next →</button>
+                <button class="btn-ghost" id="reset-section-btn" title="Clear your answers for this section">
+                  <span>Reset section</span>
+                </button>
+              </div>
+              <div class="quiz-nav-right">
+                <button class="btn btn-primary btn-small" id="submit-section-btn">
+                  Submit section &amp; see answers
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- mind map panel -->
+          <aside id="section-map-panel">
+            <!-- Filled by JS -->
+          </aside>
+        </div>
+
+        <!-- Results card -->
+        <div class="quiz-card" id="results-card">
+          <div class="results-header">
+            <div>
+              <div class="results-score" id="results-score-line">
+                You scored 0 / 0
+              </div>
+              <div class="results-summary" id="results-summary">
+                Complete the section to see your score and detailed answers.
+              </div>
+            </div>
+            <button class="btn btn-outline btn-small" id="retry-btn">
+              Try this section again
+            </button>
+          </div>
+          <div class="results-list" id="results-list">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEXTBOOK EXERCISE -->
+    <section class="section" id="textbook-exercise">
+      <h2>
+        Textbook Exercise
+        <span class="tagline">Questions &amp; Answers from the Balbharati chapter</span>
+      </h2>
+      <p class="muted" style="margin-bottom:0.8rem;">
+        Only the questions are shown at first. Click on <strong>Show Answer</strong> to reveal the answer for that
+        question.
+      </p>
+
+      <ul class="exercise-list" id="exercise-list">
+        <!-- Q1 a -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              1(a). Fill in the blanks and explain.<br/>
+              Sound does not travel through __________.
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            Sound does not travel through <strong>vacuum</strong>.
+          </div>
+        </li>
+
+        <!-- Q1 b -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              1(b). Fill in the blanks and explain.<br/>
+              The velocity of sound in steel is __________ than the velocity of sound in water.
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            The velocity of sound in steel is <strong>greater</strong> than the velocity of sound in water.
+          </div>
+        </li>
+
+        <!-- Q1 c -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              1(c). Fill in the blanks and explain.<br/>
+              The incidence of __________ in daily life shows that the velocity of sound is less than the velocity of light.
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            The incidence of <strong>lightning and thunder</strong> in daily life shows that the velocity of sound is less than the velocity of light.
+          </div>
+        </li>
+
+        <!-- Q1 d -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              1(d). Fill in the blanks and explain.<br/>
+              To discover a sunken ship or objects deep inside the sea, __________ technology is used.
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            To discover a sunken ship or objects deep inside the sea, <strong>SONAR</strong> technology is used.
+          </div>
+        </li>
+
+        <!-- Q2 a -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              2(a). Explain giving scientific reasons.<br/>
+              The roof of a movie theatre and a conference hall is curved.
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            The roof is curved so that sound is heard clearly by people sitting in all parts of the hall.
+            A curved surface reflects sound in such a way that it spreads throughout the hall and the sound
+            energy is distributed more uniformly.
+          </div>
+        </li>
+
+        <!-- Q2 b -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              2(b). Explain giving scientific reasons.<br/>
+              The intensity of reverberation is higher in a closed and empty house.
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            In a closed and empty house there are no curtains, furniture or other soft materials to absorb sound.
+            The bare walls, floor and ceiling reflect most of the sound, so the repeated reflections are strong and
+            the intensity of reverberation is higher.
+          </div>
+        </li>
+
+        <!-- Q2 c -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              2(c). Explain giving scientific reasons.<br/>
+              We cannot talk in whispers in a large room like a classroom.
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            Whispering produces sound of very low intensity. In a large room this weak sound spreads and becomes even weaker,
+            so it cannot reach students sitting far away. Hence we cannot talk in whispers in a large classroom.
+          </div>
+        </li>
+
+        <!-- Q3 a -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              3(a). Answer the following in your own words.<br/>
+              What are sound absorbing materials? For which purposes are they used?
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            Sound absorbing materials are materials that absorb a large part of the sound falling on them instead of
+            reflecting it. They are used to reduce unwanted reflected sound and to decrease reverberation in places such
+            as cinema halls, recording studios and auditoriums.
+          </div>
+        </li>
+
+        <!-- Q3 b -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              3(b). Answer the following in your own words.<br/>
+              Study the relation between density and velocity of sound and answer:<br/>
+              (i) Which medium has maximum velocity of sound?<br/>
+              (ii) Which medium has minimum velocity of sound?<br/>
+              (iii) Why?
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            (i) <strong>Hydrogen gas</strong> has the maximum velocity of sound.<br/>
+            (ii) <strong>Sulphur dioxide gas</strong> has the minimum velocity of sound.<br/>
+            (iii) For a gaseous medium, the velocity of sound is inversely proportional to the square root of density
+            (or molecular weight). So sound travels faster in lighter gases and slower in heavier gases.
+          </div>
+        </li>
+
+        <!-- Q3 c -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              3(c). Answer the following in your own words.<br/>
+              What must be the minimum distance for hearing a distinct echo (at about 22&nbsp;°C)?
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            The minimum distance between the source of sound and the reflecting surface must be about
+            <strong>17.2&nbsp;m</strong> for a distinct echo to be heard at around 22&nbsp;°C.
+          </div>
+        </li>
+
+        <!-- Q3 d -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              3(d). Answer the following in your own words.<br/>
+              On what factor does the frequency of sound heard by an observer depend?
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            The frequency of sound heard by an observer depends on the <strong>frequency of vibration of the sound-producing source</strong>.
+          </div>
+        </li>
+
+        <!-- Q3 e -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              3(e). Answer the following in your own words.<br/>
+              Explain the structural and functional characteristics of different parts of the ear.
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            Our ear has three main parts – outer ear, middle ear and inner ear.<br/><br/>
+            <strong>Outer ear</strong>: It consists of the pinna and auditory canal. The pinna collects sound waves and
+            directs them through the canal to the eardrum.<br/><br/>
+            <strong>Middle ear</strong>: It contains the eardrum and three small bones – hammer, anvil and stirrup.
+            The eardrum vibrates due to sound waves and these vibrations are transferred and amplified by the three bones.<br/><br/>
+            <strong>Inner ear</strong>: It consists of the cochlea and the auditory nerve. The vibrations reaching the
+            cochlea are converted into electrical signals. The auditory nerve carries these signals to the brain, where
+            we experience the sensation of sound.
+          </div>
+        </li>
+
+        <!-- Q4 -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              4. Where and why are sound absorbing materials used?
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            Sound absorbing materials are used on the walls, ceiling and floor of places such as cinema halls,
+            theatres, recording studios, conference halls and auditoriums. They absorb a large part of the sound and
+            reduce reverberation so that the sound is clearer and audibility improves.
+          </div>
+        </li>
+
+        <!-- Q5 a -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              5(a). The speed of sound in air at 0&nbsp;°C is 331&nbsp;m/s. If the speed of sound in air has
+              increased to 346&nbsp;m/s, find the temperature of air.<br/>
+              (Given: speed of sound increases by 0.6&nbsp;m/s for every 1&nbsp;°C rise in temperature.)
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            Increase in speed = 346 − 331 = 15&nbsp;m/s.<br/>
+            Every 0.6&nbsp;m/s increase corresponds to a 1&nbsp;°C rise in temperature.<br/>
+            Rise in temperature = 15 ÷ 0.6 = 25&nbsp;°C.<br/>
+            Therefore, the temperature of air is <strong>25&nbsp;°C</strong>.
+          </div>
+        </li>
+
+        <!-- Q5 b -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              5(b). Nita heard the sound of lightning after 4&nbsp;s. What was the distance of the lightning from her?<br/>
+              (Take velocity of sound in air as 340&nbsp;m/s.)
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            Distance = velocity × time = 340&nbsp;m/s × 4&nbsp;s = <strong>1360&nbsp;m</strong>.<br/>
+            So the lightning was 1360&nbsp;m away from Nita.
+          </div>
+        </li>
+
+        <!-- Q5 c -->
+        <li class="exercise-item">
+          <div class="exercise-header">
+            <div class="exercise-question">
+              5(c). Sunil is standing at a distance of 6&nbsp;m from a wall. If he shouts loudly, after how much time
+              will he hear the echo?<br/>
+              (Take velocity of sound in air as 340&nbsp;m/s.)
+            </div>
+            <button class="btn btn-outline btn-small exercise-toggle">Show Answer</button>
+          </div>
+          <div class="exercise-answer">
+            Sound travels from Sunil to the wall and back, so total distance = 2 × 6 = 12&nbsp;m.<br/>
+            Time = distance ÷ velocity = 12 ÷ 340 ≈ <strong>0.035&nbsp;s</strong>.<br/>
+            Sunil will hear the echo after about 0.035&nbsp;s.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      Study of Sound · Grade 8, VarshaNagar MPS · Created by
+      <strong>Rajgopal V</strong> <span class="heart">★</span>
+    </footer>
+  </div>
+
+  <script>
+    /* -----------------------------
+       QUESTION BANK (from FlashCard_Sound.csv)
+       Each entry: section must be one of:
+       "nature", "velocity", "frequency", "reflection", "ultrasonic", "ear"
+       ----------------------------- */
+
+    const QUESTION_BANK = [
+      /* 
+       TODO: Copy questions from FlashCard_Sound.csv into this array.
+       Example structure (replace with real questions/options):
+
+       {
+         id: 1,
+         section: "nature",
+         question: "Sound waves in air are of which type?",
+         options: ["Transverse", "Longitudinal", "Electromagnetic", "Stationary"],
+         correctIndex: 1
+       },
+
+       Make sure every question has exactly 4 options and a correctIndex (0–3).
+      */
+    ];
+
+    /* -----------------------------
+       Section mental map content
+       ----------------------------- */
+
+    const SECTION_MAPS = {
+      nature: {
+        title: "Nature & Types of Sound Waves – Mind Map",
+        overview: `
+          <ul class="flow-steps">
+            <li class="flow-step" data-step="1">
+              <div class="flow-step-title">Production of sound</div>
+              <div class="flow-step-body">
+                Sound is produced by <strong>vibrating bodies</strong> – for example a stretched string, vocal cords or a tuning fork.
+              </div>
+            </li>
+            <li class="flow-step" data-step="2">
+              <div class="flow-step-title">Longitudinal waves in a medium</div>
+              <div class="flow-step-body">
+                In air and other media, sound travels as <strong>longitudinal waves</strong> of <strong>compressions</strong> and
+                <strong>rarefactions</strong>.
+              </div>
+            </li>
+            <li class="flow-step" data-step="3">
+              <div class="flow-step-title">Important terms</div>
+              <ul class="flow-subpoints">
+                <li><strong>Amplitude</strong> – maximum displacement of particles from mean position.</li>
+                <li><strong>Frequency</strong> – number of vibrations per second (Hz).</li>
+                <li><strong>Wavelength</strong> – distance between two consecutive compressions or rarefactions.</li>
+              </ul>
+            </li>
+            <li class="flow-step" data-step="4">
+              <div class="flow-step-title">Loudness & pitch</div>
+              <div class="flow-step-body">
+                Loudness depends on <strong>amplitude</strong>; pitch depends on <strong>frequency</strong>.
+              </div>
+            </li>
+          </ul>
+        `
+      },
+      velocity: {
+        title: "Velocity of Sound – Mind Map",
+        overview: `
+          <ul class="flow-steps">
+            <li class="flow-step" data-step="1">
+              <div class="flow-step-title">Definition</div>
+              <div class="flow-step-body">
+                Velocity of sound = <strong>distance travelled</strong> / <strong>time taken</strong>.
+              </div>
+            </li>
+            <li class="flow-step" data-step="2">
+              <div class="flow-step-title">Dependence on medium</div>
+              <ul class="flow-subpoints">
+                <li>Fastest in <strong>solids</strong>, slower in <strong>liquids</strong>, slowest in <strong>gases</strong>.</li>
+                <li>Example: speed in steel &gt; speed in water &gt; speed in air.</li>
+              </ul>
+            </li>
+            <li class="flow-step" data-step="3">
+              <div class="flow-step-title">Effect of density (gases)</div>
+              <div class="flow-step-body">
+                For gases, speed of sound is higher in <strong>lighter</strong> gases and lower in <strong>denser</strong> gases.
+              </div>
+            </li>
+            <li class="flow-step" data-step="4">
+              <div class="flow-step-title">Effect of temperature</div>
+              <div class="flow-step-body">
+                As temperature of air increases, speed of sound also <strong>increases</strong> (about 0.6 m/s per °C in air).
+              </div>
+            </li>
+          </ul>
+        `
+      },
+      frequency: {
+        title: "Categories by Frequency – Mind Map",
+        overview: `
+          <ul class="flow-steps">
+            <li class="flow-step" data-step="1">
+              <div class="flow-step-title">Audible sound</div>
+              <div class="flow-step-body">
+                Frequency roughly between <strong>20 Hz and 20,000 Hz</strong> – range that is normally heard by humans.
+              </div>
+            </li>
+            <li class="flow-step" data-step="2">
+              <div class="flow-step-title">Infrasonic waves</div>
+              <div class="flow-step-body">
+                Frequency <strong>below 20 Hz</strong>. Some animals and natural events (e.g. earthquakes) produce such waves.
+              </div>
+            </li>
+            <li class="flow-step" data-step="3">
+              <div class="flow-step-title">Ultrasonic waves</div>
+              <div class="flow-step-body">
+                Frequency <strong>above 20,000 Hz</strong>. Used in SONAR, medical imaging and industrial cleaning.
+              </div>
+            </li>
+          </ul>
+        `
+      },
+      reflection: {
+        title: "Reflection of Sound – Mind Map",
+        overview: `
+          <ul class="flow-steps">
+            <li class="flow-step" data-step="1">
+              <div class="flow-step-title">Reflection law</div>
+              <div class="flow-step-body">
+                Sound obeys laws of reflection like light – <strong>angle of incidence = angle of reflection</strong>.
+              </div>
+            </li>
+            <li class="flow-step" data-step="2">
+              <div class="flow-step-title">Echo</div>
+              <div class="flow-step-body">
+                A distinct repetition of sound heard after reflection from a distant surface. For a distinct echo, the
+                reflecting surface should be at least about <strong>17.2 m</strong> away at 22 °C.
+              </div>
+            </li>
+            <li class="flow-step" data-step="3">
+              <div class="flow-step-title">Reverberation</div>
+              <div class="flow-step-body">
+                Persistence of sound due to multiple reflections in a closed space. Too much reverberation makes sound
+                unclear.
+              </div>
+            </li>
+            <li class="flow-step" data-step="4">
+              <div class="flow-step-title">Reducing reverberation</div>
+              <div class="flow-step-body">
+                Use <strong>sound absorbing materials</strong> like curtains, carpets, panels on walls and ceilings.
+              </div>
+            </li>
+          </ul>
+        `
+      },
+      ultrasonic: {
+        title: "Applications of Ultrasonic Sound – Mind Map",
+        overview: `
+          <ul class="flow-steps">
+            <li class="flow-step" data-step="1">
+              <div class="flow-step-title">SONAR</div>
+              <div class="flow-step-body">
+                Sound Navigation and Ranging – sends ultrasonic pulses in water and receives echoes to locate
+                <strong>sunken ships</strong> or measure depth.
+              </div>
+            </li>
+            <li class="flow-step" data-step="2">
+              <div class="flow-step-title">Industrial uses</div>
+              <ul class="flow-subpoints">
+                <li>Cleaning delicate parts like watches and instruments.</li>
+                <li>Welding plastic surfaces together.</li>
+              </ul>
+            </li>
+            <li class="flow-step" data-step="3">
+              <div class="flow-step-title">Medical uses</div>
+              <div class="flow-step-body">
+                In diagnostic techniques like ultrasonography to create images of internal organs.
+              </div>
+            </li>
+          </ul>
+        `
+      },
+      ear: {
+        title: "Human Ear – Mind Map",
+        overview: `
+          <ul class="flow-steps">
+            <li class="flow-step" data-step="1">
+              <div class="flow-step-title">Outer ear</div>
+              <div class="flow-step-body">
+                Includes <strong>pinna</strong> and <strong>auditory canal</strong>. Collects sound waves and directs them to the eardrum.
+              </div>
+            </li>
+            <li class="flow-step" data-step="2">
+              <div class="flow-step-title">Middle ear</div>
+              <ul class="flow-subpoints">
+                <li>Contains the <strong>eardrum</strong> (tympanic membrane).</li>
+                <li>Three tiny bones – hammer, anvil, stirrup – carry and amplify vibrations.</li>
+              </ul>
+            </li>
+            <li class="flow-step" data-step="3">
+              <div class="flow-step-title">Inner ear</div>
+              <ul class="flow-subpoints">
+                <li><strong>Cochlea</strong> converts vibrations into electrical signals.</li>
+                <li><strong>Auditory nerve</strong> carries signals to the brain.</li>
+              </ul>
+            </li>
+            <li class="flow-step" data-step="4">
+              <div class="flow-step-body">
+                The brain interprets these signals and we finally <strong>hear</strong> the sound.
+              </div>
+            </li>
+          </ul>
+        `
+      }
+    };
+
+    const SECTION_LABELS = {
+      nature: "Nature & Types of Sound Waves",
+      velocity: "Velocity of Sound",
+      frequency: "Categories by Frequency",
+      reflection: "Reflection of Sound",
+      ultrasonic: "Applications of Ultrasonic Sound",
+      ear: "Human Ear: Structure & Function"
+    };
+
+    let currentSection = null;
+    let currentQuestions = [];
+    let currentIndex = 0;
+    let userAnswers = [];
+    let resultsShown = false;
+
+    function shuffleArray(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function buildQuizForSection(sectionKey) {
+      const baseQuestions = QUESTION_BANK.filter(q => q.section === sectionKey);
+      // If you want random order of questions:
+      return shuffleArray(baseQuestions);
+    }
+
+    function renderSectionOverview(sectionKey) {
+      const block = document.getElementById("section-overview-block");
+      const titleEl = document.getElementById("so-title");
+      const headingEl = document.getElementById("so-heading");
+      const contentEl = document.getElementById("so-content");
+
+      const map = SECTION_MAPS[sectionKey];
+      if (!map) return;
+
+      block.style.display = "block";
+      titleEl.textContent = "Section Overview – " + SECTION_LABELS[sectionKey];
+      headingEl.textContent = map.title;
+      contentEl.innerHTML = map.overview || "";
+
+      block.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function startSectionQuiz(sectionKey) {
+      currentSection = sectionKey;
+      currentQuestions = buildQuizForSection(sectionKey);
+      currentIndex = 0;
+      userAnswers = new Array(currentQuestions.length).fill(null);
+      resultsShown = false;
+
+      const label = SECTION_LABELS[sectionKey];
+      document.getElementById("quiz-section-name").textContent = label;
+      document.getElementById("quiz-question-count").textContent =
+        `(${currentQuestions.length} questions)`;
+
+      document.getElementById("quiz-container").classList.add("active");
+      document.getElementById("results-card").classList.remove("active");
+      document.getElementById("results-summary").textContent =
+        "Answer all questions and submit to see your score and correct answers.";
+      document.getElementById("attempt-status").textContent =
+        "Choose an option and then use Next / Previous to move.";
+
+      const panel = document.getElementById("section-map-panel");
+      const map = SECTION_MAPS[sectionKey];
+      panel.innerHTML = `
+        <h4>${map.title}</h4>
+        <div class="full-map-scroll">${map.overview}</div>
+      `;
+      panel.classList.remove("active");
+      document.getElementById("toggle-map-label").textContent =
+        "Show mind map while answering";
+
+      renderCurrentQuestion();
+      document.getElementById("quiz-area").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function renderCurrentQuestion() {
+      if (!currentQuestions.length) {
+        document.getElementById("question-text").textContent =
+          "No MCQs loaded for this section yet. Please add them in the QUESTION_BANK.";
+        document.getElementById("options-list").innerHTML = "";
+        document.getElementById("question-counter").textContent = "Question 0 of 0";
+        document.getElementById("progress-bar").style.width = "0%";
+        return;
+      }
+
+      const qObj = currentQuestions[currentIndex];
+      const total = currentQuestions.length;
+
+      document.getElementById("question-counter").textContent =
+        `Question ${currentIndex + 1} of ${total}`;
+      document.getElementById("question-text").textContent = qObj.question;
+
+      const progress = ((currentIndex + 1) / total) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+
+      const list = document.getElementById("options-list");
+      list.innerHTML = "";
+
+      const letters = ["A", "B", "C", "D"];
+      qObj.options.forEach((opt, idx) => {
+        const li = document.createElement("li");
+        li.className = "option-item";
+
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "option";
+        input.value = idx;
+
+        const labelSpan = document.createElement("span");
+        labelSpan.className = "option-letter";
+        labelSpan.textContent = letters[idx];
+
+        const textSpan = document.createElement("span");
+        textSpan.className = "option-text";
+        textSpan.textContent = opt;
+
+        li.appendChild(input);
+        li.appendChild(labelSpan);
+        li.appendChild(textSpan);
+
+        if (userAnswers[currentIndex] === idx) {
+          input.checked = true;
+          li.classList.add("selected");
+        }
+
+        li.addEventListener("click", () => {
+          userAnswers[currentIndex] = idx;
+          document
+            .querySelectorAll(".option-item")
+            .forEach(item => item.classList.remove("selected"));
+          li.classList.add("selected");
+          input.checked = true;
+          document.getElementById("attempt-status").textContent =
+            "Answer saved. Use Next or Previous to move.";
+        });
+
+        list.appendChild(li);
+      });
+
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled = currentIndex === total - 1;
+    }
+
+    function showResults() {
+      const total = currentQuestions.length;
+      if (!total) return;
+
+      let correct = 0;
+      const resultsList = document.getElementById("results-list");
+      resultsList.innerHTML = "";
+
+      currentQuestions.forEach((q, index) => {
+        const userAns = userAnswers[index];
+        const isCorrect = userAns === q.correctIndex;
+        if (isCorrect) correct++;
+
+        const item = document.createElement("div");
+        item.className = "result-item";
+
+        const header = document.createElement("div");
+        header.className = "result-item-header";
+
+        const left = document.createElement("div");
+        left.textContent = `Q${index + 1}`;
+
+        const pill = document.createElement("div");
+        pill.className = "result-pill " + (isCorrect ? "correct" : "incorrect");
+        pill.textContent = isCorrect
+          ? "✔ Correct"
+          : userAns === null
+          ? "⚠ Not answered"
+          : "✖ Incorrect";
+
+        header.appendChild(left);
+        header.appendChild(pill);
+
+        const qText = document.createElement("div");
+        qText.className = "result-q";
+        qText.textContent = q.question;
+
+        const correctLine = document.createElement("div");
+        correctLine.className = "result-line";
+        correctLine.innerHTML =
+          "<strong>Correct answer:</strong> " + q.options[q.correctIndex];
+
+        const yourLine = document.createElement("div");
+        yourLine.className = "result-line";
+        yourLine.innerHTML =
+          "<strong>Your answer:</strong> " +
+          (userAns === null ? "Not answered" : q.options[userAns]);
+
+        item.appendChild(header);
+        item.appendChild(qText);
+        item.appendChild(correctLine);
+        item.appendChild(yourLine);
+
+        resultsList.appendChild(item);
+      });
+
+      const scoreLine = document.getElementById("results-score-line");
+      const summary = document.getElementById("results-summary");
+      const percent = Math.round((correct / total) * 100);
+      const cls = percent >= 60 ? "good" : "bad";
+
+      scoreLine.innerHTML =
+        `You scored <span class="${cls}">${correct} / ${total}</span> (${percent}%)`;
+
+      if (percent === 100) {
+        summary.textContent = "Brilliant! You have mastered this section.";
+      } else if (percent >= 60) {
+        summary.textContent =
+          "Good work! Revise the ones you missed and try again.";
+      } else {
+        summary.textContent =
+          "Keep practising. Use the mind map and reattempt the quiz.";
+      }
+
+      document.getElementById("results-card").classList.add("active");
+      resultsShown = true;
+    }
+
+    // Section buttons
+    document.querySelectorAll(".section-card .section-actions .btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const sectionKey = btn.getAttribute("data-section");
+        const action = btn.getAttribute("data-action");
+        if (!sectionKey || !action) return;
+
+        if (action === "overview") {
+          renderSectionOverview(sectionKey);
+        } else if (action === "quiz") {
+          startSectionQuiz(sectionKey);
+        }
+      });
+    });
+
+    // Quiz navigation
+    document.getElementById("next-btn").addEventListener("click", () => {
+      if (currentIndex < currentQuestions.length - 1) {
+        currentIndex++;
+        renderCurrentQuestion();
+      }
+    });
+
+    document.getElementById("prev-btn").addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderCurrentQuestion();
+      }
+    });
+
+    document.getElementById("submit-section-btn").addEventListener("click", showResults);
+
+    document.getElementById("reset-section-btn").addEventListener("click", () => {
+      if (!currentQuestions.length) return;
+      userAnswers = new Array(currentQuestions.length).fill(null);
+      currentIndex = 0;
+      document.getElementById("results-card").classList.remove("active");
+      document.getElementById("attempt-status").textContent =
+        "All answers cleared. Start again.";
+      renderCurrentQuestion();
+    });
+
+    document.getElementById("retry-btn").addEventListener("click", () => {
+      if (!currentSection) return;
+      startSectionQuiz(currentSection);
+    });
+
+    document.getElementById("toggle-map-btn").addEventListener("click", () => {
+      const panel = document.getElementById("section-map-panel");
+      const label = document.getElementById("toggle-map-label");
+      const isActive = panel.classList.toggle("active");
+      label.textContent = isActive
+        ? "Hide mind map"
+        : "Show mind map while answering";
+    });
+
+    // Textbook exercise toggle logic
+    document.querySelectorAll(".exercise-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const answer = btn.closest(".exercise-item").querySelector(".exercise-answer");
+        const visible = answer.classList.toggle("visible");
+        btn.textContent = visible ? "Hide Answer" : "Show Answer";
+      });
+    });
+  </script>
+</body>
+</html>
