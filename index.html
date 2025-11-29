@@ -1296,22 +1296,616 @@
        "nature", "velocity", "frequency", "reflection", "ultrasonic", "ear"
        ----------------------------- */
 
-    const QUESTION_BANK = [
-      /* 
-       TODO: Copy questions from FlashCard_Sound.csv into this array.
-       Example structure (replace with real questions/options):
+const QUESTION_BANK = [
+  // --- NATURE & TYPES OF SOUND WAVES ---
+  {
+    id: 1,
+    section: "nature",
+    question: "Sound waves are classified as _____ waves because the particles of the medium oscillate parallel to the direction of wave propagation.",
+    options: [
+      "Transverse",
+      "Electromagnetic",
+      "Longitudinal",
+      "Stationary"
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 2,
+    section: "nature",
+    question: "What is a 'compression' in the context of a sound wave?",
+    options: [
+      "A region in the medium where particles are crowded together, resulting in higher pressure and density.",
+      "A region in the medium where particles are spread apart, resulting in lower pressure and density.",
+      "The repetition of an original sound caused by its reflection.",
+      "The persistence of sound in a hall due to multiple reflections."
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 3,
+    section: "nature",
+    question: "What is a 'rarefaction' in the context of a sound wave?",
+    options: [
+      "A region in the medium where particles are crowded together, resulting in higher pressure and density.",
+      "A region in the medium where particles are spread apart, resulting in lower pressure and density.",
+      "The distance between two consecutive compressions.",
+      "The time taken for one complete oscillation."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 4,
+    section: "nature",
+    question: "What characteristic of a sound wave is indicated by the Greek letter lambda ($$\\lambda$$)?",
+    options: [
+      "Frequency, or the number of oscillations per second.",
+      "Amplitude, or the maximum displacement of particles.",
+      "Time period, or the time for one oscillation.",
+      "Wavelength, which is the distance between two consecutive compressions or rarefactions."
+    ],
+    correctIndex: 3
+  },
+  {
+    id: 5,
+    section: "nature",
+    question: "The maximum value of pressure or density of a medium during sound propagation is known as the wave's _____.",
+    options: [
+      "Frequency",
+      "Amplitude (A)",
+      "Wavelength",
+      "Velocity"
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 6,
+    section: "nature",
+    question: "What physical property of a sound wave determines its pitch?",
+    options: [
+      "Amplitude ($$A$$).",
+      "Wavelength ($$\\lambda$$).",
+      "Frequency ($$\\nu$$).",
+      "Velocity ($$v$$)."
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 7,
+    section: "nature",
+    question: "What physical property of a sound wave determines its loudness or strength?",
+    options: [
+      "Amplitude (A).",
+      "Frequency ($$\\nu$$).",
+      "Wavelength ($$\\lambda$$).",
+      "Time period (T)."
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 8,
+    section: "nature",
+    question: "What is the term for the time taken for one complete oscillation of pressure or density at a point in a medium?",
+    options: [
+      "Frequency ($$\\nu$$).",
+      "Time period (T).",
+      "Wavelength ($$\\lambda$$).",
+      "Velocity ($$v$$)."
+    ],
+    correctIndex: 1
+  },
 
-       {
-         id: 1,
-         section: "nature",
-         question: "Sound waves in air are of which type?",
-         options: ["Transverse", "Longitudinal", "Electromagnetic", "Stationary"],
-         correctIndex: 1
-       },
+  // --- VELOCITY OF SOUND ---
+  {
+    id: 9,
+    section: "velocity",
+    question: "What is the formula that relates the velocity of sound ($$v$$) to its wavelength ($$\\lambda$$) and frequency ($$\\nu$$)?",
+    options: [
+      "$$v = \\nu \\lambda$$",
+      "$$v = \\frac{\\lambda}{T}$$",
+      "$$\\lambda = v \\nu$$",
+      "$$v = T \\lambda$$"
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 10,
+    section: "velocity",
+    question: "How is the velocity of sound ($$v$$) related to its wavelength ($$\\lambda$$) and time period (T)?",
+    options: [
+      "$$v = \\nu \\lambda$$",
+      "$$v = \\frac{\\lambda}{T}$$",
+      "$$v = \\lambda T$$",
+      "$$v = \\frac{T}{\\lambda}$$"
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 11,
+    section: "velocity",
+    question: "In which state of matter does sound generally travel the fastest?",
+    options: [
+      "Gases",
+      "Liquids",
+      "Solids",
+      "Vacuum"
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 12,
+    section: "velocity",
+    question: "How does an increase in the temperature of a medium affect the velocity of sound within it?",
+    options: [
+      "The velocity of sound decreases with increase in temperature.",
+      "The velocity of sound remains unchanged.",
+      "The velocity of sound becomes zero.",
+      "The velocity of sound increases with increase in temperature."
+    ],
+    correctIndex: 3
+  },
+  {
+    id: 13,
+    section: "velocity",
+    question: "The velocity of sound in a gaseous medium is _____ proportional to the square root of its density ($$\\rho$$).",
+    options: [
+      "Directly",
+      "Inversely",
+      "Not",
+      "Equally"
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 14,
+    section: "velocity",
+    question: "The velocity of sound in a gas is inversely proportional to the square root of its _____.",
+    options: [
+      "Amplitude",
+      "Frequency",
+      "Temperature",
+      "Molecular weight."
+    ],
+    correctIndex: 3
+  },
 
-       Make sure every question has exactly 4 options and a correctIndex (0–3).
-      */
-    ];
+  // --- CATEGORIES BY FREQUENCY ---
+  {
+    id: 15,
+    section: "frequency",
+    question: "What is the typical range of frequencies that the human ear can detect, known as audible sound?",
+    options: [
+      "20 Hz to 20,000 Hz (20 kHz).",
+      "2 Hz to 200 Hz.",
+      "200 Hz to 2,000 Hz.",
+      "Above 20,000 Hz."
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 16,
+    section: "frequency",
+    question: "What is the term for sound with frequencies smaller than 20 Hz?",
+    options: [
+      "Ultrasound.",
+      "Infrasound.",
+      "Audible sound.",
+      "Noise."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 17,
+    section: "frequency",
+    question: "What is the term for sound with frequencies greater than 20,000 Hz (20 kHz)?",
+    options: [
+      "Infrasound.",
+      "Ultrasound.",
+      "Audible sound.",
+      "Noise."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 18,
+    section: "frequency",
+    question: "Which Italian scientist discovered that bats use their ears, not their eyes, for navigation in the dark?",
+    options: [
+      "Galileo Galilei.",
+      "Isaac Newton.",
+      "Lazzaro Spallanzani.",
+      "Albert Einstein."
+    ],
+    correctIndex: 2
+  },
+
+  // --- REFLECTION OF SOUND (echo, reverberation etc.) ---
+  {
+    id: 19,
+    section: "reflection",
+    question: "What is the phenomenon called when sound waves bounce off a surface?",
+    options: [
+      "Refraction of sound.",
+      "Reflection of sound.",
+      "Diffraction of sound.",
+      "Interference of sound."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 20,
+    section: "reflection",
+    question: "What is an echo?",
+    options: [
+      "The persistence of sound due to multiple reflections.",
+      "A region in the medium where particles are spread apart.",
+      "The repetition of an original sound caused by its reflection from a surface.",
+      "The distance between two consecutive compressions."
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 21,
+    section: "reflection",
+    question: "For a distinct echo to be heard, what is the minimum time interval needed between the original sound and the reflected sound?",
+    options: [
+      "0.01 seconds.",
+      "0.1 seconds.",
+      "1 second.",
+      "10 seconds."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 22,
+    section: "reflection",
+    question: "At 22°C, what is the minimum distance required between a sound source and a reflecting surface to hear a distinct echo?",
+    options: [
+      "1.72 meters.",
+      "7.2 meters.",
+      "17.2 meters.",
+      "172 meters."
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 23,
+    section: "reflection",
+    question: "The persistence of sound in a large room due to repeated reflections from walls and ceilings is called _____.",
+    options: [
+      "Echo.",
+      "Reverberation.",
+      "Diffraction.",
+      "Amplification."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 24,
+    section: "reflection",
+    question: "Why are materials like paper, curtains, and carpet considered 'bad reflectors' of sound?",
+    options: [
+      "Because they absorb a large part of the sound energy and reflect very little sound.",
+      "Because they reflect all the sound perfectly.",
+      "Because they do not allow sound to enter the room.",
+      "Because they increase the speed of sound."
+    ],
+    correctIndex: 0
+  },
+
+  // --- APPLICATIONS OF ULTRASONIC SOUND / SONAR ---
+  {
+    id: 25,
+    section: "ultrasonic",
+    question: "What does the acronym SONAR stand for?",
+    options: [
+      "Sound Navigation And Ranging.",
+      "Sound Nature And Reflection.",
+      "Solar Navigation And Radar.",
+      "Sound Node Analysis Recording."
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 26,
+    section: "ultrasonic",
+    question: "What type of sound waves are used by SONAR technology?",
+    options: [
+      "Audible sound waves.",
+      "Infrasonic sound waves.",
+      "Ultrasonic sound waves.",
+      "Electromagnetic waves."
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 27,
+    section: "ultrasonic",
+    question: "How does a SONAR system determine the distance to an underwater object?",
+    options: [
+      "By measuring the change in pitch of the sound.",
+      "By measuring the time difference between the transmission of an ultrasonic pulse and the reception of its echo.",
+      "By measuring changes in temperature of the water.",
+      "By observing the colour of the reflected light."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 28,
+    section: "ultrasonic",
+    question: "What medical technology uses ultrasonic waves to generate images of internal human organs?",
+    options: [
+      "X-ray imaging.",
+      "Sonography.",
+      "Magnetic resonance imaging (MRI).",
+      "Endoscopy."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 29,
+    section: "ultrasonic",
+    question: "What is the purpose of the gel applied to the skin during a sonography examination?",
+    options: [
+      "To cool the skin during the test.",
+      "To reduce the speed of sound in the body.",
+      "To ensure proper contact between the probe and the skin for efficient ultrasound transmission.",
+      "To colour the image on the monitor."
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 30,
+    section: "ultrasonic",
+    question: "List one industrial application of ultrasonic sound mentioned in the text.",
+    options: [
+      "To join plastic surfaces, sterilize liquids like milk, or locate cracks in metal blocks.",
+      "To cook food in a microwave oven.",
+      "To increase the loudness of loudspeakers.",
+      "To cool heavy machinery."
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 31,
+    section: "ultrasonic",
+    question: "What is the name of the medical technique that uses ultrasonic waves to study heartbeats?",
+    options: [
+      "Electrocardiography.",
+      "Echocardiography.",
+      "Angiography.",
+      "Endoscopy."
+    ],
+    correctIndex: 1
+  },
+
+  // --- HUMAN EAR: STRUCTURE & FUNCTION ---
+  {
+    id: 32,
+    section: "ear",
+    question: "What are the three main parts of the human ear?",
+    options: [
+      "Outer ear, middle ear, and inner ear.",
+      "Ear canal, eardrum, and cochlea.",
+      "Pinna, hammer, and cochlea.",
+      "Hammer, anvil, and stirrup."
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 33,
+    section: "ear",
+    question: "What is the function of the outer ear, or Pinna?",
+    options: [
+      "It vibrates and sends signals to the brain.",
+      "It collects sound waves and directs them into the auditory canal towards the eardrum.",
+      "It converts sound into electrical signals.",
+      "It amplifies the sound using three small bones."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 34,
+    section: "ear",
+    question: "What is the thin membrane in the middle ear that vibrates in response to sound waves?",
+    options: [
+      "The cochlea.",
+      "The auditory nerve.",
+      "The eardrum.",
+      "The pinna."
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 35,
+    section: "ear",
+    question: "In which part of the inner ear are sound vibrations converted into electrical signals?",
+    options: [
+      "The cochlea.",
+      "The eardrum.",
+      "The auditory canal.",
+      "The pinna."
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 36,
+    section: "ear",
+    question: "Which nerve transmits the electrical signals from the cochlea to the brain for analysis?",
+    options: [
+      "The optic nerve.",
+      "The spinal nerve.",
+      "The auditory nerve.",
+      "The olfactory nerve."
+    ],
+    correctIndex: 2
+  },
+
+  // --- MORE VELOCITY QUESTIONS / TABLE-BASED ---
+  {
+    id: 37,
+    section: "velocity",
+    question: "The Italian physicists Borelli and Viviani measured the speed of sound in the 1660s. What was their approximate value?",
+    options: [
+      "150 m/s.",
+      "350 m/s.",
+      "600 m/s.",
+      "1,500 m/s."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 38,
+    section: "velocity",
+    question: "According to the provided table, what is the speed of sound in steel at 25°C?",
+    options: [
+      "340 m/s.",
+      "331 m/s.",
+      "1498 m/s.",
+      "5960 m/s."
+    ],
+    correctIndex: 3
+  },
+  {
+    id: 39,
+    section: "velocity",
+    question: "According to the provided table, what is the speed of sound in pure water at 25°C?",
+    options: [
+      "331 m/s.",
+      "340 m/s.",
+      "1498 m/s.",
+      "5960 m/s."
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 40,
+    section: "velocity",
+    question: "If the molecular weight of oxygen ($$O_2$$) is 32 and hydrogen ($$H_2$$) is 2, in which gas will sound travel faster under the same conditions?",
+    options: [
+      "Oxygen, because its molecular weight is higher.",
+      "Hydrogen, because velocity is inversely proportional to the square root of molecular weight.",
+      "Both gases have the same speed of sound.",
+      "Neither gas can transmit sound."
+    ],
+    correctIndex: 1
+  },
+
+  // --- REFLECTION (APPLICATIONS, ECHO PLACES, ETC.) ---
+  {
+    id: 41,
+    section: "reflection",
+    question: "Why is the roof of a movie theatre or conference hall often curved?",
+    options: [
+      "To make the hall look beautiful.",
+      "To keep the hall cool.",
+      "To ensure sound reflects and spreads evenly throughout the hall, preventing issues like echoes or dead spots.",
+      "To reduce the speed of sound."
+    ],
+    correctIndex: 2
+  },
+  {
+    id: 42,
+    section: "reflection",
+    question: "Why is it generally not possible to hear an echo in a typical classroom?",
+    options: [
+      "Because the walls are too smooth.",
+      "Because the distance to the reflecting walls is less than the minimum distance required to perceive the echo as distinct from the original sound.",
+      "Because there is no sound reflection in a classroom.",
+      "Because the ceiling is always curved."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 43,
+    section: "reflection",
+    question: "What is a prominent example of a location known for its multiple echoes due to continuous reflections?",
+    options: [
+      "The Taj Mahal in Agra.",
+      "The Golghumat at Vijapur in Karnataka.",
+      "The Qutub Minar in Delhi.",
+      "The India Gate in Delhi."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 44,
+    section: "reflection",
+    question: "Why does sound seem louder in an empty, closed house compared to an open space?",
+    options: [
+      "Because there is no air in the house.",
+      "Because the sound source becomes stronger indoors.",
+      "Due to reverberation, where multiple reflections of the sound reach the ear, increasing the perceived loudness.",
+      "Because sound cannot escape through the windows."
+    ],
+    correctIndex: 2
+  },
+
+  // --- MORE ULTRASONIC / LEGAL ASPECT ---
+  {
+    id: 45,
+    section: "ultrasonic",
+    question: "What technique, first developed during World War I, uses ultrasonic waves to detect enemy submarines?",
+    options: [
+      "Radar technology.",
+      "SONAR technology.",
+      "Microscopy.",
+      "Electrocardiography."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: 46,
+    section: "frequency",
+    question: "Besides humans, name an animal that can hear or produce ultrasonic sound.",
+    options: [
+      "Bats, mice, or dolphins.",
+      "Cows.",
+      "Tortoises.",
+      "Goldfish."
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 47,
+    section: "ultrasonic",
+    question: "The PNDT Act is a law against the misuse of which medical technology?",
+    options: [
+      "X-ray imaging.",
+      "Magnetic resonance imaging (MRI).",
+      "Sonography (specifically for the purpose of female foeticide).",
+      "Endoscopy."
+    ],
+    correctIndex: 2
+  },
+
+  // --- LAW OF REFLECTION & TRANSVERSE WAVE ---
+  {
+    id: 48,
+    section: "reflection",
+    question: "According to the laws of reflection, the angle of incidence is equal to the _____.",
+    options: [
+      "Angle of reflection",
+      "Angle of refraction",
+      "Angle of diffraction",
+      "Right angle"
+    ],
+    correctIndex: 0
+  },
+  {
+    id: 49,
+    section: "nature",
+    question: "In a transverse wave, how do the particles of the medium oscillate relative to the wave's direction of propagation?",
+    options: [
+      "Parallel to the direction of propagation.",
+      "Opposite to the direction of propagation.",
+      "In random directions.",
+      "Perpendicular to the direction of the wave's propagation."
+    ],
+    correctIndex: 3
+  }
+];
+
 
     /* -----------------------------
        Section mental map content
